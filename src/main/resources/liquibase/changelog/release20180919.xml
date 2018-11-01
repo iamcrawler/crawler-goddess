@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="utf-8"?>
+<databaseChangeLog
+        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns="http://www.liquibase.org/xml/ns/dbchangelog"
+        xsi:schemaLocation="http://www.liquibase.org/xml/ns/dbchangelog
+                      http://www.liquibase.org/xml/ns/dbchangelog/dbchangelog-3.4.xsd">
+
+    <property name="now" value="now()" dbms="mysql,h2"/>
+    <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
+
+    <changeSet id="201811010924001" author="liang.liu">
+        <sqlFile path="classpath:liquibase/init/init_table.sql" encoding="UTF-8"/>
+        <sqlFile path="classpath:liquibase/init/add_user.sql" encoding="UTF-8"/>
+    </changeSet>
+
+
+
+</databaseChangeLog>
