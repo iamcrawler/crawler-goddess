@@ -203,6 +203,7 @@
     </repositories>
 
     <build>
+        <finalName>crawler-goddess</finalName>
         <plugins>
             <plugin>
                 <groupId>org.springframework.boot</groupId>
