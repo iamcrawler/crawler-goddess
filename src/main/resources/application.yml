@@ -1,8 +1,10 @@
-
-
 liquibase:
   change-log: classpath:liquibase\master.xml
 
+
+spring:
+  application:
+    name: crawler-goddess
 
 mybatis:
   type-aliases-package: cn.iamcrawler.crawlergoddess.domain

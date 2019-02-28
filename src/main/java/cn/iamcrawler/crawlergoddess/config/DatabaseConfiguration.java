@@ -45,6 +45,7 @@ public class DatabaseConfiguration {
 
     /**
      * 注册数据源，使用阿里巴巴的一个实现类
+     *
      * @return
      */
     @Bean
@@ -68,6 +69,7 @@ public class DatabaseConfiguration {
 
     /**
      * 注册sqlSession
+     *
      * @return
      */
     @Bean

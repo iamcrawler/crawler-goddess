@@ -119,10 +119,10 @@
         </dependency>
 
         <!-- Spring Security Oauth2 -->
-        <dependency>
-            <groupId>org.springframework.security.oauth</groupId>
-            <artifactId>spring-security-oauth2</artifactId>
-        </dependency>
+        <!--<dependency>-->
+            <!--<groupId>org.springframework.security.oauth</groupId>-->
+            <!--<artifactId>spring-security-oauth2</artifactId>-->
+        <!--</dependency>-->
 
         <dependency>
             <groupId>org.springframework.boot</groupId>
@@ -153,7 +153,6 @@
         </dependency>
 
 
-
         <dependency>
             <groupId>com.codingapi</groupId>
             <artifactId>tx-plugins-db</artifactId>
@@ -177,6 +176,14 @@
             <artifactId>crawler</artifactId>
             <version>1.0</version>
         </dependency>
+
+        <!--rabbit-mq-->
+        <dependency>
+            <groupId>org.springframework.boot</groupId>
+            <artifactId>spring-boot-starter-amqp</artifactId>
+        </dependency>
+
+
 
     </dependencies>
 

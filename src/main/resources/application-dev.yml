@@ -1,6 +1,5 @@
-
 server:
-  port: 9991
+  port: 9993
 
 spring:
   datasource:
@@ -11,7 +10,7 @@ spring:
   redis:
     host: localhost
     port: 6379
-    password:
+    password: 123456
     database: 0
     pool.max-active: 8
     pool.max-wait: -1
@@ -20,6 +19,11 @@ spring:
     timeout: 0
   application:
     name: crawler-goddess
+  rabbitmq:
+    host: www.iamcrawler.cn
+    port: 5672
+    username: liuliang
+    password: liuliang
 
 eureka:
   client:

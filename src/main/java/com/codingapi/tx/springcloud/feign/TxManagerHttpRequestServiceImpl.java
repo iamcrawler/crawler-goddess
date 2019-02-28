@@ -5,11 +5,11 @@ import com.lorne.core.framework.utils.http.HttpUtils;
 import org.springframework.stereotype.Service;
 
 /**
- *  Created by liuliang on 2018/10/10.
+ * Created by liuliang on 2018/10/10.
  */
 
 @Service
-public class TxManagerHttpRequestServiceImpl implements TxManagerHttpRequestService{
+public class TxManagerHttpRequestServiceImpl implements TxManagerHttpRequestService {
 
     @Override
     public String httpGet(String url) {
@@ -22,7 +22,7 @@ public class TxManagerHttpRequestServiceImpl implements TxManagerHttpRequestServ
     @Override
     public String httpPost(String url, String params) {
         System.out.println("httpPost-start");
-        String res = HttpUtils.post(url,params);
+        String res = HttpUtils.post(url, params);
         System.out.println("httpPost-end");
         return res;
     }

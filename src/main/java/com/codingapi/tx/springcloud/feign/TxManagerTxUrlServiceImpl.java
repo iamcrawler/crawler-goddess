@@ -8,7 +8,7 @@ import org.springframework.stereotype.Service;
  * Created by liuliang on 2018/10/10.
  */
 @Service
-public class TxManagerTxUrlServiceImpl implements TxManagerTxUrlService{
+public class TxManagerTxUrlServiceImpl implements TxManagerTxUrlService {
 
 
     @Value("${tm.manager.url}")
