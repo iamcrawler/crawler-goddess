@@ -39,4 +39,4 @@ tm:
 logging:
   level:
     com:
-      codingapi: debug
+      codingapi: info
