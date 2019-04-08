@@ -6,8 +6,8 @@ import com.baomidou.mybatisplus.plugins.OptimisticLockerInterceptor;
 import com.baomidou.mybatisplus.plugins.PaginationInterceptor;
 import com.baomidou.mybatisplus.plugins.PerformanceInterceptor;
 import com.baomidou.mybatisplus.spring.MybatisSqlSessionFactoryBean;
-import com.baomidou.mybatisplus.spring.boot.starter.MybatisPlusProperties;
 import org.apache.ibatis.plugin.Interceptor;
+import org.mybatis.spring.boot.autoconfigure.MybatisProperties;
 import org.mybatis.spring.boot.autoconfigure.SpringBootVFS;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.jdbc.DataSourceProperties;
@@ -28,16 +28,16 @@ import java.util.Properties;
  * Created by liuliang on 2018/11/1.
  */
 @Configuration
-@EnableConfigurationProperties({DataSourceProperties.class, MybatisPlusProperties.class})
+@EnableConfigurationProperties({DataSourceProperties.class, MybatisProperties.class})
 public class DatabaseConfiguration {
 
     private final DataSourceProperties dataSourceProperties;
-    private final MybatisPlusProperties properties;
+    private final MybatisProperties properties;
     private final ResourceLoader resourceLoader;
 
     @Autowired(required = false)
 //    private Interceptor[] interceptors;
-    public DatabaseConfiguration(DataSourceProperties dataSourceProperties, MybatisPlusProperties properties, ResourceLoader resourceLoader) {
+    public DatabaseConfiguration(DataSourceProperties dataSourceProperties, MybatisProperties properties, ResourceLoader resourceLoader) {
         this.dataSourceProperties = dataSourceProperties;
         this.properties = properties;
         this.resourceLoader = resourceLoader;

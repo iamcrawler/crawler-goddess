@@ -72,7 +72,8 @@
         <dependency>
             <groupId>com.baomidou</groupId>
             <artifactId>mybatis-plus</artifactId>
-            <version>2.3</version>
+            <version>2.1-gamma</version>
+            <scope>compile</scope>
         </dependency>
 
         <!--mybatis-->
@@ -178,14 +179,14 @@
         <dependency>
             <groupId>cn.iamcrawler</groupId>
             <artifactId>crawler_common</artifactId>
-            <version>1.0.0</version>
+            <version>1.0.1</version>
         </dependency>
 
-        <!--<dependency>-->
-            <!--<groupId>cn.iamcrawler</groupId>-->
-            <!--<artifactId>crawler</artifactId>-->
-            <!--<version>1.0</version>-->
-        <!--</dependency>-->
+        <dependency>
+            <groupId>cn.iamcrawler</groupId>
+            <artifactId>crawler</artifactId>
+            <version>1.0</version>
+        </dependency>
 
         <!--rabbit-mq-->
         <dependency>
@@ -199,9 +200,7 @@
             <artifactId>cglib</artifactId>
             <version>3.1</version>
         </dependency>
-
-
-
+        
     </dependencies>
 
     <!-- 设定主仓库 -->
