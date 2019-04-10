@@ -19,12 +19,12 @@ spring:
     port: 5672
     username: liuliang
     password: liuliang
-  data:
-    elasticsearch:
-      cluster-name: elasticsearch
-      cluster-nodes: 47.106.77.78:9300
-      repositories:
-        enabled: true
+#  data:
+#    elasticsearch:
+#      cluster-name: elasticsearch
+#      cluster-nodes: 47.106.77.78:9300
+#      repositories:
+#        enabled: true
 
 
 eureka:
