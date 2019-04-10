@@ -30,14 +30,67 @@ public class AliExpress {
     private static final String EXPRESS = "express:info:";
 
 
-    public static AliExpressResult getAliExpress(String code) {
+    public static AliExpressResult getAliExpress(String code,Boolean flag) {
+
+
         AliExpressResult result = new AliExpressResult();
-        //已完成的先从缓存取，没取到再调用接口
-        String info = RedisUtil.get(EXPRESS+code);
-        if(StringUtils.isNotEmpty(info)){
-            Map<String, Object> map = JSONUtil.json2map(info);
-            log.info(code+"========================从缓存获取物流信息...");
-            return ObjectUtils.parseMap2Object(map, AliExpressResult.class);
+
+        if(flag){
+            //已完成的先从缓存取，没取到再调用接口
+            String info = RedisUtil.get(EXPRESS+code);
+            if(StringUtils.isNotEmpty(info)){
+                Map<String, Object> map = JSONUtil.json2map(info);
+                log.info(code+"========================从缓存获取物流信息...");
+                return ObjectUtils.parseMap2Object(map, AliExpressResult.class);
+            }else {
+                Map<String, String> headers = new HashMap<String, String>();
+                //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
+                headers.put("Authorization", "APPCODE " + appcode);
+                Map<String, String> querys = new HashMap<String, String>();
+                querys.put("nu", code);
+                querys.put("com", "");
+                querys.put("muti", "0");
+                querys.put("order", "desc");
+                querys.put("id",appcode);
+                try {
+                    HttpResponse response = HttpUtil.doGet(host, path, method, headers, querys);
+                    log.info("response:{}",response);
+                    String s = EntityUtils.toString(response.getEntity());
+                    if(!ObjectUtils.isNullOrEmpty(s)){
+                        HashMap parse = JSON.parseObject(s,HashMap.class);
+                        log.info("parse:{}",parse);
+                        result = ObjectUtils.parseMap2Object(parse, AliExpressResult.class);
+                        log.info("result:{}",result);
+                        if(StringUtils.isNotEmpty(result.getReason())){
+                        }
+                    }
+                }
+
+                catch (Exception e){
+                    e.printStackTrace();
+                    //查不到或者有异常，不抛，筛到数据里面
+                    List<ExpressDetail> list = new ArrayList<>();
+                    ExpressDetail detail = new ExpressDetail();
+                    detail.setTag("0");
+                    detail.setTagName(result.getReason());
+                    detail.setContext(result.getReason());
+                    list.add(detail);
+                    result.setData(list);
+                    result.setNu(code);
+                }
+
+                //处理tag标志
+                dealTags(result);
+                if("6".equals(result.getStatus())){//签收则永久缓存
+                    log.info(code+"========================已签收，第一次查询，存入缓存...");
+                    String jsonString = JSON.toJSONString(result);
+                    RedisUtil.set(EXPRESS+code,jsonString);
+                }else {//否则缓存2小时
+                    log.info(code+"=======================还没签收,缓存两小时.....");
+                    String jsonString = JSON.toJSONString(result);
+                    RedisUtil.set(EXPRESS+code,jsonString,60*60*2);
+                }
+            }
         }else {
             Map<String, String> headers = new HashMap<String, String>();
             //最后在header中的格式(中间是英文空格)为Authorization:APPCODE 83359fd73fe94948385f570e3c139105
@@ -80,13 +133,14 @@ public class AliExpress {
             if("6".equals(result.getStatus())){//签收则永久缓存
                 log.info(code+"========================已签收，第一次查询，存入缓存...");
                 String jsonString = JSON.toJSONString(result);
-                RedisUtil.set(EXPRESS+code,jsonString);
+//                RedisUtil.set(EXPRESS+code,jsonString);
             }else {//否则缓存2小时
                 log.info(code+"=======================还没签收,缓存两小时.....");
                 String jsonString = JSON.toJSONString(result);
-                RedisUtil.set(EXPRESS+code,jsonString,60*60*2);
+//                RedisUtil.set(EXPRESS+code,jsonString,60*60*2);
             }
         }
+
         return result;
     }
 

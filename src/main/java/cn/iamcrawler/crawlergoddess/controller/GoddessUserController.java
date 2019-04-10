@@ -33,7 +33,7 @@ public class GoddessUserController {
 
     @GetMapping("/get/by/code")
     public ResponseEntity getDetailByCode(@Param("code") String code){
-        AliExpressResult aliExpress = AliExpress.getAliExpress(code);
+        AliExpressResult aliExpress = AliExpress.getAliExpress(code,false);
         return ResponseEntity.ok(aliExpress);
     }
 
