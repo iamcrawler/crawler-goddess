@@ -9,7 +9,6 @@ import org.apache.http.HttpResponse;
 import org.apache.http.util.EntityUtils;
 import org.springframework.util.CollectionUtils;
 
-import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
@@ -152,14 +151,14 @@ public class AliExpress {
         return false;
     }
 
-    public static void main(String[] args) {
-
-
-        BigDecimal a = new BigDecimal(1);
-        a = a.add(new BigDecimal(2));
-
-        System.out.println(a);
-
-    }
+//    public static void main(String[] args) {
+//
+//
+//        BigDecimal a = new BigDecimal(1);
+//        a = a.add(new BigDecimal(2));
+//
+//        System.out.println(a);
+//
+//    }
 
 }
