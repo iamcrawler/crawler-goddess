@@ -1,29 +1,29 @@
 package cn.iamcrawler.crawlergoddess.service;
 
 import cn.iamcrawler.crawler_common.domain.goddess.DataUser;
-import cn.iamcrawler.crawler_common.domain.goddess.MallAgent;
 import cn.iamcrawler.crawlergoddess.mapper.DataUserMapper;
-import cn.iamcrawler.crawlergoddess.mapper.MallAgentMapper;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.plugins.Page;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.core.metadata.IPage;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.redis.core.RedisTemplate;
 import org.springframework.data.redis.core.ZSetOperations;
 import org.springframework.stereotype.Service;
-import org.springframework.util.StringUtils;
 
 import java.text.ParseException;
 import java.text.SimpleDateFormat;
-import java.util.*;
+import java.util.ArrayList;
+import java.util.Date;
+import java.util.List;
+import java.util.Set;
 
 /**
  * Created by liuliang on 2019/3/21.
  */
 @Service
 @Slf4j
-public class DataUserService extends ServiceImpl<DataUserMapper, DataUser> {
+public class DataUserService extends ServiceImpl<DataUserMapper,DataUser>{
 
 
     private static  final  String DATA_USER= "data:user:";
@@ -31,24 +31,11 @@ public class DataUserService extends ServiceImpl<DataUserMapper, DataUser> {
     @Autowired
     private RedisTemplate redisTemplate;
 
-    @Autowired
-    private MallAgentMapper agentMapper;
-
-
-
-
-
-
-
-
-
-
-
-
-
-
     public void queryDataUsers(){
-        List<DataUser> result = this.selectList(new EntityWrapper<DataUser>().orderBy("register_time_label"));
+        List<DataUser> result = this.list(
+                new QueryWrapper<DataUser>()
+                        .orderBy(true,false,"register_time_label")
+        );
         ZSetOperations zSetOperations = redisTemplate.opsForZSet();
         result.forEach(
                 dataUser -> {
@@ -69,7 +56,7 @@ public class DataUserService extends ServiceImpl<DataUserMapper, DataUser> {
     }
 
 
-    public Page getDataUsersPage(Page page,Boolean flag){
+    public IPage getDataUsersPage(IPage page, Boolean flag){
         if(flag){
             log.info("===========page:{}",page);
             ZSetOperations zSetOperations = redisTemplate.opsForZSet();
@@ -80,10 +67,7 @@ public class DataUserService extends ServiceImpl<DataUserMapper, DataUser> {
             return  page;
         }
 
-        return this.selectPage(page, new EntityWrapper<DataUser>().orderBy("register_time_label"));
+        return this.page(page, new QueryWrapper<DataUser>().orderBy(true,false,"register_time_label"));
     }
-
-
-
 
 }

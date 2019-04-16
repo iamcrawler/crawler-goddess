@@ -2,7 +2,7 @@ package cn.iamcrawler.crawlergoddess.controller;
 
 import cn.iamcrawler.crawlergoddess.service.DataUserService;
 import cn.iamcrawler.crawlergoddess.util.MybatisPageUtil;
-import com.baomidou.mybatisplus.plugins.Page;
+import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;

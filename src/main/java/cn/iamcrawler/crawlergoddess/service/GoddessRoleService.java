@@ -5,11 +5,11 @@ import cn.iamcrawler.crawler_common.domain.goddess.GoddessUser;
 import cn.iamcrawler.crawlergoddess.interceptor.SayThingsInterceptor;
 import cn.iamcrawler.crawlergoddess.mapper.GoddessRoleMapper;
 import cn.iamcrawler.crawlergoddess.mapper.GoddessUserMapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
 import net.sf.cglib.proxy.Enhancer;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
 import java.math.BigInteger;
 import java.security.MessageDigest;
 import java.util.ArrayList;
@@ -23,7 +23,9 @@ import java.util.List;
 @Slf4j
 public class GoddessRoleService extends ServiceImpl<GoddessRoleMapper, GoddessRole> {
 
+
     private GoddessUserService userService;
+    @Autowired
     private GoddessUserMapper userMapper ;
 
 
@@ -41,7 +43,7 @@ public class GoddessRoleService extends ServiceImpl<GoddessRoleMapper, GoddessRo
                         .phone("18855554444")
                         .mail("")
                         .build();
-        userMapper.insert(a);
+
         throw new RuntimeException("");
     }
 

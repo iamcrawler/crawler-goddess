@@ -1,7 +1,7 @@
 package cn.iamcrawler.crawlergoddess.mapper;
 
 import cn.iamcrawler.crawler_common.domain.goddess.GoddessUserRole;
-import com.baomidou.mybatisplus.mapper.BaseMapper;
+import com.baomidou.mybatisplus.core.mapper.BaseMapper;
 
 /**
  * Created by liuliang on 2018/11/9.

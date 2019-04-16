@@ -2,13 +2,11 @@ package cn.iamcrawler.crawlergoddess.service;
 
 import cn.iamcrawler.crawler_common.domain.goddess.GoddessUser;
 import cn.iamcrawler.crawler_common.domain.goddess.MallAgent;
-import cn.iamcrawler.crawlergoddess.interceptor.SayThingsInterceptor;
 import cn.iamcrawler.crawlergoddess.mapper.GoddessUserMapper;
 import cn.iamcrawler.crawlergoddess.mapper.MallAgentMapper;
-import com.baomidou.mybatisplus.mapper.EntityWrapper;
-import com.baomidou.mybatisplus.service.impl.ServiceImpl;
+import com.baomidou.mybatisplus.core.conditions.query.QueryWrapper;
+import com.baomidou.mybatisplus.extension.service.impl.ServiceImpl;
 import lombok.extern.slf4j.Slf4j;
-import net.sf.cglib.proxy.Enhancer;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
@@ -93,7 +91,7 @@ public class GoddessUserService extends ServiceImpl<GoddessUserMapper, GoddessUs
 
     public List<MallAgent> getCricleAgent(){
 
-        List<MallAgent> mallAgents = agentMapper.selectList(new EntityWrapper<MallAgent>());
+        List<MallAgent> mallAgents = agentMapper.selectList(new QueryWrapper<MallAgent>());
 
         log.info("mallAgents:" ,mallAgents.size());
 
