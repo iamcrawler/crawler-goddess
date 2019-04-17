@@ -191,6 +191,12 @@
         <!--</dependency>-->
 
         <dependency>
+            <groupId>com.codingapi.txlcn</groupId>
+            <artifactId>txlcn-tm</artifactId>
+            <version>5.0.2.RELEASE</version>
+        </dependency>
+
+        <dependency>
             <groupId>cn.iamcrawler</groupId>
             <artifactId>crawler_common</artifactId>
             <version>1.0.1</version>

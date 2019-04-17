@@ -35,9 +35,9 @@ eureka:
 
 init-db: true
 #txmanager地址
-tm:
-  manager:
-    url: http://localhost:6000/tx/manager/
+#tm:
+#  manager:
+#    url: http://localhost:6000/tx/manager/
 logging:
   level:
     com:
