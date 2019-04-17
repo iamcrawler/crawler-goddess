@@ -90,6 +90,15 @@
             <version>2.1</version>
         </dependency>
 
+
+        <!--postgresql-->
+        <dependency>
+            <groupId>org.postgresql</groupId>
+            <artifactId>postgresql</artifactId>
+            <scope>runtime</scope>
+        </dependency>
+
+
         <!--mybatis-->
         <dependency>
             <groupId>org.mybatis</groupId>

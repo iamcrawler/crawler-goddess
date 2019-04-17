@@ -8,10 +8,8 @@
     <property name="now" value="now()" dbms="mysql,h2"/>
     <property name="autoIncrement" value="true" dbms="mysql,h2,postgresql,oracle"/>
 
-    <changeSet id="201811010924001" author="liang.liu">
-        <sqlFile path="classpath:liquibase/init/init_table.sql" encoding="UTF-8"/>
-        <sqlFile path="classpath:liquibase/init/add_user.sql" encoding="UTF-8"/>
+    <changeSet id="20191614001" author="liang.liu">
+        <sqlFile path="classpath:liquibase/init/test.sql"></sqlFile>
     </changeSet>
-
 
 </databaseChangeLog>

@@ -78,11 +78,11 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:mysql://localhost:3306/goddess?useUnicode=true&useSSL=false&characterEncoding=utf8&serverTimezone=UTC");
+        dsc.setUrl("jdbc:postgresql://www.iamcrawler.cn:5432/postgres?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC");
         // dsc.setSchemaName("public");
-        dsc.setDriverName("com.mysql.cj.jdbc.Driver");
-        dsc.setUsername("root");
-        dsc.setPassword("123456");
+        dsc.setDriverName("org.postgresql.Driver");
+        dsc.setUsername("postgres");
+        dsc.setPassword("postgres");
         mpg.setDataSource(dsc);
 
         // 包配置
