@@ -22,7 +22,7 @@ public class RabbitController {
      * @return
      */
     @GetMapping("/direct")
-    public ResponseEntity direct(){
+    public ResponseEntity direct() {
         sender.sendDirectQueue();
         return ResponseEntity.ok(true);
     }

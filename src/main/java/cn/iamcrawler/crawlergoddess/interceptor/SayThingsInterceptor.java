@@ -12,9 +12,9 @@ public class SayThingsInterceptor implements MethodInterceptor {
 
     @Override
     public Object intercept(Object o, Method method, Object[] objects, MethodProxy methodProxy) throws Throwable {
-        System.out.println("before:"+method.getName());
+        System.out.println("before:" + method.getName());
         Object o1 = methodProxy.invokeSuper(o, objects);
-        System.out.println("after:"+method.getName());
+        System.out.println("after:" + method.getName());
         return o1;
     }
 

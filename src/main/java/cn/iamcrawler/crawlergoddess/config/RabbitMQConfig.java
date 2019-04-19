@@ -7,19 +7,19 @@ import org.springframework.context.annotation.Configuration;
 
 /**
  * Created by liuliang on 2019/1/23.
- *
- *    rabbit-mq配置文件
- *
+ * <p>
+ * rabbit-mq配置文件
  */
 @Configuration
 @Slf4j
 public class RabbitMQConfig {
 
-   public static final String QUEUE = "direct_queue";
+    public static final String QUEUE = "direct_queue";
 
 
     /**
      * Direct模式
+     *
      * @return
      */
     @Bean
@@ -37,8 +37,8 @@ public class RabbitMQConfig {
 
 
     /**
-     *  dead letter exchange
-     *  延时消息就是发送在这个交换机上
+     * dead letter exchange
+     * 延时消息就是发送在这个交换机上
      */
 
     public static final String ORDER_DELAY_EXCHANGE = "user.order.delay.exchange";
@@ -55,10 +55,6 @@ public class RabbitMQConfig {
     public static final String ORDER_QUEUE_NAME = "user.order.queue";
     public static final String ORDER_EXCHANGE_NAME = "user.order.exchange";
     public static final String ORDER_ROUTING_KEY = "order";
-
-
-
-
 
 
 }

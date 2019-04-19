@@ -59,9 +59,9 @@ public class JSONUtil {
         } catch (IOException e) {
             log.error("fail to convert json to pojo!reason{}", e);
             throw new RuntimeJsonMappingException("IOException!");
-        }catch (Exception e ){
+        } catch (Exception e) {
             e.printStackTrace();
-            throw  e;
+            throw e;
         }
     }
 

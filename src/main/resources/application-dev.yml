@@ -3,7 +3,7 @@ server:
 
 spring:
   datasource:
-    url: jdbc:postgresql://www.iamcrawler.cn:5432/postgres?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
+    url: jdbc:postgresql://www.iamcrawler.cn:5432/mft?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC
     username: postgres
     password: postgres
     driver-class-name:  org.postgresql.Driver
@@ -19,12 +19,12 @@ spring:
     port: 5672
     username: liuliang
     password: liuliang
-#  data:
-#    elasticsearch:
-#      cluster-name: elasticsearch
-#      cluster-nodes: 47.106.77.78:9300
-#      repositories:
-#        enabled: true
+  jpa:
+    properties:
+      hibernate:
+        jdbc:
+          lob:
+            non_contextual_creation: true
 
 
 eureka:

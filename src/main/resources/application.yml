@@ -1,15 +1,12 @@
-
-
-
 spring:
   application:
     name: crawler-goddess
   liquibase:
     change-log: classpath:liquibase\master.xml
 
-mybatis:
-  type-aliases-package: cn.iamcrawler.crawlergoddess.domain
-  mapper-locations: cn/iamcrawler/crawlergoddess/mapper/xml/*Mapper.xml
-  type-handlers-package: cn.iamcrawler.crawlergoddess.mapper.typehandler
-  global-config:
-    refresh-mapper: true
+#mybatis-plus:
+#  type-aliases-package: cn.iamcrawler.crawlergoddess.domain
+#  mapper-locations: cn/iamcrawler/crawlergoddess/mapper/xml/*Mapper.xml
+#  type-handlers-package: cn.iamcrawler.crawlergoddess.mapper.typehandler
+#  global-config:
+#    refresh-mapper: true

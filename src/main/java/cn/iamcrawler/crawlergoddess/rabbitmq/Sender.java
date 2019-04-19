@@ -8,8 +8,7 @@ import org.springframework.stereotype.Component;
 
 /**
  * Created by liuliang on 2019/1/23.
- *  消息发送者
- *
+ * 消息发送者
  */
 @Component
 @Slf4j

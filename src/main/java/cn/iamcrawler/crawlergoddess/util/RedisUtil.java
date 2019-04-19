@@ -64,6 +64,7 @@ public class RedisUtil {
 
     /**
      * 设置 String
+     *
      * @param key
      * @param value
      */
@@ -87,6 +88,7 @@ public class RedisUtil {
 
     /**
      * 设置 byte[]
+     *
      * @param key
      * @param value
      */
@@ -107,6 +109,7 @@ public class RedisUtil {
 
     /**
      * 设置 key 过期时间
+     *
      * @param key
      * @param time
      */
@@ -124,6 +127,7 @@ public class RedisUtil {
 
     /**
      * 设置 String 过期时间
+     *
      * @param key
      * @param value
      * @param seconds 以秒为单位
@@ -139,6 +143,7 @@ public class RedisUtil {
 
     /**
      * 设置 byte[] 过期时间
+     *
      * @param key
      * @param value
      * @param seconds 以秒为单位
@@ -154,6 +159,7 @@ public class RedisUtil {
 
     /**
      * 获取String值
+     *
      * @param key
      * @return value
      */
@@ -164,6 +170,7 @@ public class RedisUtil {
 
     /**
      * 获取byte[]值
+     *
      * @param key
      * @return value
      */
@@ -174,6 +181,7 @@ public class RedisUtil {
 
     /**
      * 删除值
+     *
      * @param key
      */
     public synchronized static void remove(String key) {
@@ -182,6 +190,7 @@ public class RedisUtil {
 
     /**
      * 删除值
+     *
      * @param key
      */
     public synchronized static void remove(byte[] key) {
@@ -190,6 +199,7 @@ public class RedisUtil {
 
     /**
      * 从Redis中获取值，并重置有效期
+     *
      * @param key
      * @return
      */
@@ -204,6 +214,7 @@ public class RedisUtil {
 
     /**
      * 根据表达式，获取所有键的集合
+     *
      * @param pattern 表达式格式，如：key_*
      * @return
      */
@@ -228,6 +239,7 @@ public class RedisUtil {
 
     /**
      * 一次获取多个值
+     *
      * @param keys
      * @return
      */
@@ -244,6 +256,7 @@ public class RedisUtil {
 
     /**
      * 根据Key获取已经保存到Redis中所有的值,Session级别
+     *
      * @param key 键
      * @return map数据
      */
@@ -264,6 +277,7 @@ public class RedisUtil {
 
     /**
      * 根据Key和HashKey获取一个值，返回String
+     *
      * @param key     键
      * @param hashKey has键
      * @return String 缓存数据
@@ -283,6 +297,7 @@ public class RedisUtil {
 
     /**
      * 递增
+     *
      * @param key
      * @param delta
      * @return
@@ -296,6 +311,7 @@ public class RedisUtil {
 
     /**
      * 递减
+     *
      * @param key 键
      * @return
      */
@@ -308,6 +324,7 @@ public class RedisUtil {
 
     /**
      * 删除hash表中的值
+     *
      * @param key  键 不能为null
      * @param item 项 可以使多个 不能为null
      */
@@ -317,6 +334,7 @@ public class RedisUtil {
 
     /**
      * 移除N个值为value
+     *
      * @param key   键
      * @param count 移除多少个
      * @param value 值
@@ -334,6 +352,7 @@ public class RedisUtil {
 
     /**
      * 移除值为value的
+     *
      * @param key    键
      * @param values 值 可以是多个
      * @return 移除的个数
@@ -350,6 +369,7 @@ public class RedisUtil {
 
     /**
      * 获取list缓存的内容
+     *
      * @param key   键
      * @param start 开始
      * @param end   结束  0 到 -1代表所有值
@@ -366,6 +386,7 @@ public class RedisUtil {
 
     /**
      * 获取list缓存的长度
+     *
      * @param key 键
      * @return
      */
@@ -380,6 +401,7 @@ public class RedisUtil {
 
     /**
      * 将list放入缓存
+     *
      * @param key   键
      * @param value 值
      * @return
@@ -396,6 +418,7 @@ public class RedisUtil {
 
     /**
      * 将list放入缓存
+     *
      * @param key   键
      * @param value 值
      * @param time  时间(秒)
@@ -416,6 +439,7 @@ public class RedisUtil {
 
     /**
      * 将list放入缓存
+     *
      * @param key   键
      * @param value 值
      * @return
@@ -432,6 +456,7 @@ public class RedisUtil {
 
     /**
      * 将list放入缓存
+     *
      * @param key   键
      * @param value 值
      * @param time  时间(秒)
@@ -452,6 +477,7 @@ public class RedisUtil {
 
     /**
      * 从右侧弹出
+     *
      * @param key 键
      * @return
      */
@@ -467,6 +493,7 @@ public class RedisUtil {
 
     /**
      * 从左侧弹出
+     *
      * @param key 键
      * @return
      */
@@ -482,6 +509,7 @@ public class RedisUtil {
 
     /**
      * 在Redis中放入值，并指定有效时间
+     *
      * @param key
      * @param value
      * @param expire
@@ -496,6 +524,7 @@ public class RedisUtil {
 
     /**
      * 模糊查询
+     *
      * @param pattern
      * @return
      */
