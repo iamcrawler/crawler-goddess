@@ -9,39 +9,28 @@ import com.baomidou.mybatisplus.generator.config.po.TableInfo;
 import com.baomidou.mybatisplus.generator.config.rules.NamingStrategy;
 import com.baomidou.mybatisplus.generator.engine.FreemarkerTemplateEngine;
 import org.apache.commons.lang3.StringUtils;
-import org.springframework.beans.factory.annotation.Value;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
 
 /**
+ * 代码生成器
  * Created by liuliang on 2019/4/16.
  */
 public class CodeGenerator {
 
+    private static String url = "jdbc:postgresql://www.iamcrawler.cn:5432/mft?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC";
 
+    private static String username = "postgres";
 
-    private static String url;
-    @Value("#{spring.datasource.url}")
-    private void setUrl(String url) {
-        this.url = url;
-    }
+    private static String password = "postgres";
 
-    private static String userName;
-    @Value("#{spring.datasource.username}")
-    private void setUserName(String userName) {
-        this.userName = userName;
-    }
+    private static String driverClass = "org.postgresql.Driver";
 
+    private static String parent = "cn.iamcrawler.crawlergoddess";
 
-
-    private static String password;
-
-    @Value("#{spring.datasource.password}")
-    private void setPassword(String password) {
-        this.password = password;
-    }
+    private static String mapperParent = "/cn/iamcrawler/crawlergoddess/";
 
 
     /**
@@ -78,17 +67,18 @@ public class CodeGenerator {
 
         // 数据源配置
         DataSourceConfig dsc = new DataSourceConfig();
-        dsc.setUrl("jdbc:postgresql://www.iamcrawler.cn:5432/postgres?characterEncoding=utf8&useUnicode=true&useSSL=false&serverTimezone=UTC");
+        dsc.setUrl(url);
         // dsc.setSchemaName("public");
-        dsc.setDriverName("org.postgresql.Driver");
-        dsc.setUsername("postgres");
-        dsc.setPassword("postgres");
+        dsc.setDriverName(driverClass);
+        dsc.setUsername(username);
+        dsc.setPassword(password);
         mpg.setDataSource(dsc);
 
         // 包配置
         PackageConfig pc = new PackageConfig();
-        pc.setModuleName(scanner("模块名"));
-        pc.setParent("cn.iamcrawler.crawlergoddess");
+        String modelName = scanner("模块名");
+        pc.setModuleName(modelName);
+        pc.setParent(parent);
         mpg.setPackageInfo(pc);
 
         // 自定义配置
@@ -98,27 +88,23 @@ public class CodeGenerator {
                 // to do nothing
             }
         };
-
         // 如果模板引擎是 freemarker
         String templatePath = "/templates/mapper.xml.ftl";
         // 如果模板引擎是 velocity
 //         String templatePath = "/templates/mapper.xml.vm";
-
         // 自定义输出配置
         List<FileOutConfig> focList = new ArrayList<>();
         // 自定义配置会被优先输出
         focList.add(new FileOutConfig(templatePath) {
             @Override
             public String outputFile(TableInfo tableInfo) {
-                // 自定义输出文件名 ， 如果你 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
-                return projectPath + "/src/main/resources/mapper/" + pc.getModuleName()
+                // 自定义输出文件名 ， 如果 Entity 设置了前后缀、此处注意 xml 的名称会跟着发生变化！！
+                return projectPath + "/src/main/java"+mapperParent+modelName+"/mapper/" + pc.getModuleName()
                         + "/" + tableInfo.getEntityName() + "Mapper" + StringPool.DOT_XML;
             }
         });
-
         cfg.setFileOutConfigList(focList);
         mpg.setCfg(cfg);
-
         // 配置模板
         TemplateConfig templateConfig = new TemplateConfig();
 
@@ -129,14 +115,17 @@ public class CodeGenerator {
         StrategyConfig strategy = new StrategyConfig();
         strategy.setNaming(NamingStrategy.underline_to_camel);
         strategy.setColumnNaming(NamingStrategy.underline_to_camel);
-//        strategy.setSuperEntityClass("cn.iamcrawler.crawlergoddess.entity");
         strategy.setEntityLombokModel(true);
         strategy.setRestControllerStyle(true);
 //        strategy.setSuperControllerClass("cn.iamcrawler.crawlergoddess.controller");
         strategy.setInclude(scanner("表名，多个英文逗号分割").split(","));
-        strategy.setSuperEntityColumns("id");
+//        strategy.setSuperEntityColumns("id");
+//        strategy.setSuperEntityClass(cn.iamcrawler.crawler_common.domain.SuperEntity.class);
+//        strategy.setSuperEntityClass("cn.iamcrawler.crawler_common.domain.SuperEntity");
         strategy.setControllerMappingHyphenStyle(true);
         strategy.setTablePrefix(pc.getModuleName() + "_");
+        strategy.setVersionFieldName("version");
+        strategy.setLogicDeleteFieldName("deleted");
         mpg.setStrategy(strategy);
         mpg.setTemplateEngine(new FreemarkerTemplateEngine());
         mpg.execute();
